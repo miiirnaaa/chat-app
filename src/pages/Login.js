@@ -4,7 +4,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import Chat from "../images/Chat.png";
 
-
 const Login = () => {
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/")
+      navigate("/");
     } catch (err) {
       setErr(true);
     }
@@ -24,7 +23,7 @@ const Login = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-      <img className="ChatImg" width={150} src={Chat} alt="" />
+        <img className="ChatImg" width={150} src={Chat} alt="" />
         <span className="logo">Mirnin Chat</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
@@ -33,7 +32,9 @@ const Login = () => {
           <button>Sign in</button>
           {err && <span>Something went wrong</span>}
         </form>
-        <p>You don't have an account?? <Link to="/register">Register</Link></p>
+        <p>
+          You don't have an account?? <Link to="/register">Register</Link>
+        </p>
       </div>
     </div>
   );
